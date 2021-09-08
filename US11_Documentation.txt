@@ -1,0 +1,1 @@
+Task #11: The splash screen is found /lebkuchen/src/main/java/memoranda/ui/App.java (The splash screen method starts at line 150 and the actual image for the splash screen is on line 153)

@@ -1,0 +1,82 @@
+ plugins {
+    id "com.github.spotbugs" version "3.0.0"
+    id "checkstyle"
+    id "jacoco"
+}
+
+
+apply plugin: 'application'
+apply plugin: 'jacoco'
+
+mainClassName = 'main/java/memoranda/Start'
+
+compileJava.options.encoding = 'UTF-8'
+
+
+
+// Repositories and dependencies for code go here
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'com.io7m.xom:xom:1.2.+'
+  compile 'net.sourceforge.nekohtml:nekohtml:1.9.+'
+
+  compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+  compile 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.12'
+}
+
+jacoco {
+  toolVersion = "0.8.5"
+}
+
+
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled true
+    }
+  }
+
+task runWithJavaExec(type: JavaExec) {
+    group = "Execution"
+    description = "Run the main Api conneciton class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'main.java.memoranda.api.MainConnection'
+}
+
+ apply plugin: 'checkstyle'
+ checkstyle {
+   // Keep checkstyle a little quieter
+   ignoreFailures = true
+   showViolations = false
+ }
+
+ tasks.withType(Checkstyle) {
+   reports {
+     html.enabled = true
+     xml.enabled = false
+   }
+ }
+ checkstyle {
+     toolVersion = "8.8"
+ }
+
+
+  tasks.withType(com.github.spotbugs.SpotBugsTask) {
+   ignoreFailures = true
+
+   reports {
+     xml.enabled = false
+     html.enabled = true
+   }
+ }
+ spotbugs {
+  toolVersion = '4.0.1'
+}
+
+

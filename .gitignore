@@ -1,0 +1,45 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+### Eclipse ###
+
+### Eclipse Patch ###
+# Eclipse Core		
+.project
+
+# JDT-specific (Eclipse Java Development Tools)		
+.classpath
+
+### Gradle ###
+.gradle
+/build/
+
+# Mac DS file
+.DS_Store
+
+#Intellij IDEA
+.idea
+
+# VSCODE
+.settings
+
+/bin/
+
+
+#not even sure if these should be in here or not
+/out
+Lebkuchen.iml
+
+
+# VSCODE
+.settings
+
+/bin/
+
+#not even sure if these should be in here or not
+/out
+Lebkuchen.iml
+
