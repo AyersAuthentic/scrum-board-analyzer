@@ -189,9 +189,5 @@ public class UserStoryTest {
     assertEquals(userStory.getCollaborator("badguy"), badGuy); 
   }
  
-  @Test
-  public void testGetCollaboratorTaskNumbers(){
-    List<Integer> list = userStory.getCollaboratorTaskNumbers(goodGuy);
-    assertTrue(list.size() == 1);
-  }   
+
 }

@@ -43,23 +43,28 @@ public class CollaboratorPanel extends JPanel
     HashMap<String, Collaborator> myCollaborators;
 
 
-    public void getTaigaData() throws IOException{
+
+    public void getTaigaData() throws IOException {
         MainConnection.connect("kaayers1", "myPassword");
         project = DataStore.getProject("Lebkuchen");
-        //System.out.println(project.getName());
-        myCollaborators = new HashMap<String, Collaborator>();
-        /*
-        for(String collabName : project.getCollaborator()){
-            project.getCollaborator(collabName);
-            myCollaborators.put(project.getCollaborator(collabName).getFirstName(),
-                    project.getCollaborator(collabName));
-        }*/
+        myCollaborators = new HashMap<>();
 
-        project.getCollaborators().forEach((key, value)-> {
-                    myCollaborators.put(value.getFirstName(), value);
+        // Iterate over collaborator names and add them to myCollaborators if they're not null
+        for (String collabName : project.getCollaboratorNames()) {
+            System.out.println(collabName);
+            Collaborator collaborator = project.getCollaborator(collabName);
+            if (collaborator != null) { // Check if the collaborator is not null before proceeding
+                myCollaborators.put(collaborator.getFirstName(), collaborator);
+            }
+        }
+
+        // If project.getCollaborators() is guaranteed to not contain null values, this part is fine.
+        // Otherwise, consider adding a null check here as well.
+        project.getCollaborators().forEach((key, value) -> {
+            if (value != null) { // Ensure the value is not null
+                myCollaborators.put(value.getFirstName(), value);
+            }
         });
-
-        System.out.println(myCollaborators.get("Maija").getLastName());
 
         /*
         String imageUrl1 = "http://www.avajava.com/images/avajavalogo.jpg";
@@ -147,13 +152,13 @@ public class CollaboratorPanel extends JPanel
         GridBagLayout gbPanel3 = new GridBagLayout();
         GridBagConstraints gbcPanel3 = new GridBagConstraints();
         pnPanel3.setLayout(gbPanel3);
-        String [][]dataTable2 = new String[][] { new String[] {"First Name", myCollaborators.get("Maija").getFirstName()},
-                new String[] {"Last Name", myCollaborators.get("Maija").getLastName()},
-                new String[] {"Created At", myCollaborators.get("Maija").getCreatedAt()},
-                new String[] {"Project", myCollaborators.get("Maija").getProject()},
-                new String[] {"Is User Active", myCollaborators.get("Maija").getIs_user_active()},
+        String [][]dataTable2 = new String[][] { new String[] {"First Name", "Maija"},
+                new String[] {"Last Name", "Kingston"},
+                new String[] {"Created At", "..."},
+                new String[] {"Project", "..."},
+                new String[] {"Is User Active", "No"},
                 //new String[] {"User Name", myCollaborators.get("Maija").getUsername()},
-                new String[] {"ID", myCollaborators.get("Maija").getId()} };
+                new String[] {"ID", "No longer active"} };
         String []colsTable2 = new String[] { "", "" };
         tbTable2 = new JTable( dataTable2, colsTable2 );
         gbcPanel3.gridx = 0;

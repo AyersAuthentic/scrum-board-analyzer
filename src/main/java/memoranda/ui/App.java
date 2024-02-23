@@ -129,10 +129,7 @@ public class App {
 		} else {
 			frame.setExtendedState(Frame.NORMAL);
 		}
-		/* --------------------------------------------------------------- */
-		/* Added By Jeremy Whitlock (jcscoobyrs) 07-Nov-2003 at 15:54:24 */
-
-		// Not needed ???
+		
 		frame.setVisible(true);
 		frame.toFront();
 		frame.requestFocus();

@@ -30,19 +30,19 @@ public class Task {
     this.dateAdded = LocalDate.parse(taskData.getCreated_date().substring(0,10));
     this.taskNumber = Integer.parseInt(taskData.getRef());
     this.state = State.stringToState(taskData.getStatus_extra_info().getName());
-//    System.out.println("\nThis is the task taskData claiment");
-//    try{
-//      System.out.println(taskData.getAssigned_to_extra_info().getFull_name_display());
-//    }catch (NullPointerException e){
-//      System.out.println("No one has claimed this task");
-//    }
-//    System.out.println("This is the project collaborator name");
-//    try{
-//      System.out.println(project.getCollaborator(taskData.getAssigned_to_extra_info().getFull_name_display()).getFullName());
-//    }catch (NullPointerException e){
-//      System.out.println("There is no project collaborator name because no one has claimed the task");
-//    }
-//    System.out.println("---------");
+   System.out.println("\nThis is the task taskData claiment");
+   try{
+     System.out.println(taskData.getAssigned_to_extra_info().getFull_name_display());
+   }catch (NullPointerException e){
+     System.out.println("No one has claimed this task");
+   }
+   System.out.println("This is the project collaborator name");
+   try{
+     System.out.println(project.getCollaborator(taskData.getAssigned_to_extra_info().getFull_name_display()).getFullName());
+   }catch (NullPointerException e){
+     System.out.println("There is no project collaborator name because no one has claimed the task");
+   }
+   System.out.println("---------");
 
     try{
       this.claimant = project.getCollaborator(taskData.getAssigned_to_extra_info().getFull_name_display());
@@ -214,11 +214,13 @@ public class Task {
     return dayTimeline;
   }
 
-  public LinkedHashMap<String, String> toSimpleMap(){
+  public LinkedHashMap<String, String> toSimpleMap() {
     LinkedHashMap<String, String> map = new LinkedHashMap<>();
     map.put("Title", getTitle());
-    map.put("Claiment", getClaimant().getFirstName());
+    // Check for null claimant before attempting to access its properties
+    String claimantName = claimed() ? getClaimant().getFirstName() : "Unclaimed";
+    map.put("Claiment", claimantName);
     map.put("State", getState().toString());
     return map;
-  }
+}
 }

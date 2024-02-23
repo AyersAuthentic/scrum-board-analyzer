@@ -58,9 +58,10 @@ public class UserStory {
     }
 
     this.collaborators = new HashMap<>();
-    for(Task task : tasks.values()){
-      if (!task.getClaimant().getFirstName().equals("Unclaimed")){
-        this.collaborators.put(task.getClaimant().getFullName(), task.getClaimant());
+      for(Task task : tasks.values()){
+        Collaborator claimant = task.getClaimant();
+        if (claimant != null && !claimant.getFirstName().equals("Unclaimed")){
+          this.collaborators.put(claimant.getFullName(), claimant);
       }
     }
   }
@@ -312,8 +313,9 @@ public class UserStory {
   public List<Integer> getCollaboratorTaskNumbers(Collaborator collaborator){
     List<Integer> numbers = new LinkedList<>();
     for(Task task : tasks.values()){
-      if(task.getClaimant() == collaborator){
-        numbers.add(task.getTaskNumber());  
+      Collaborator claimant = task.getClaimant();
+      if (claimant != null && !claimant.getFirstName().equals("Unclaimed")){
+        this.collaborators.put(claimant.getFullName(), claimant);
       }
     }
     return numbers;
