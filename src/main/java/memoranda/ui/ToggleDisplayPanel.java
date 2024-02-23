@@ -46,19 +46,19 @@ public class ToggleDisplayPanel extends JPanel {
       toggle.setPreferredSize(new Dimension(150, 50));
       toggle.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e){
-//          System.out.println("Action performed " + mode);
           if(mode == 0){
-            remove(carousel);
-            add(table, BorderLayout.CENTER);
-            mode = 1; 
+              if(carousel != null) remove(carousel);
+              if(table != null) add(table, BorderLayout.CENTER);
+              mode = 1; 
           } else {
-            remove(table);
-            add(carousel, BorderLayout.CENTER);
-            mode = 0;
+              if(table != null) remove(table);
+              if(carousel != null) add(carousel, BorderLayout.CENTER);
+              mode = 0;
           }
           revalidate();
           repaint();  
-        }
+      }
+
       });
       buttonPanel= new JPanel();
       buttonPanel.setLayout(new FlowLayout());
