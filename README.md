@@ -36,7 +36,7 @@ gradle -v
 # Output should show Gradle 8.6
 
 # Clone the repository
-git clone https://github.com/yourusername/scrum-board-analyzer.git
+git clone https://github.com/AyersAuthentic/scrum-board-analyzer.git
 
 # Navigate to the project directory
 cd scrum-board-analyzer
