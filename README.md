@@ -1,22 +1,50 @@
-Project SER316
+# Scrum Board Analyzer
 
-This is the initial dump for the SER316 project. It is a slightly modified version of the Memoranda project from memoranda.sf.net
+## Overview
 
-The purpose of this project is to enhance the Memoranda application.
+The Scrum Board Analyzer is a comprehensive full-stack desktop application designed for agile teams to connect to and analyze data from the Trello API. This project enables users to visualize and assess their project's progress in real-time, enhancing decision-making and team collaboration. Developed during an intensive software engineering course, this application embodies a blend of technical proficiency and practical functionality, addressing the real-world needs of agile project management.
 
-Memoranda is a project that has largely been dormant since 2007, so why are we using it? This codebase has been used in the past, it is of sufficient size and scope to challenge your skills in understanding a complete application (it has somewhere in the neighborhood of 25k lines of code). It also has features that just about anyone who has ever used a calendaring application can understand. 
+## Features
 
-In the docs directory is an initial set of analysis models - class diagrams and sequence diagrams in UML, that a previous team did as part of their solution process. These were included only in the event that you may want to use these as a head start on your design and implementation work. You are absolutely not required to use or implement anything in the analysis document!
+- **Continuous Integration**: Ensures code integrity by automatically building and testing code changes, facilitating a robust development process.
+- **Automated Testing**: Incorporates a suite of tests to validate functionality and ensure reliability across updates.
+- **Style Checks**: Adheres to industry-standard coding practices to maintain code quality and readability.
+- **API Integration**: Seamlessly connects with the Trello API to fetch real-time data, offering a dynamic and interactive user experience.
+- **Front-End & Back-End Development in Java**: A cohesive full-stack solution, with a user-friendly interface and a powerful server-side to process and display data efficiently.
+- **Gradle Build Tool**: Utilizes Gradle for streamlined building, testing, and deployment across different machines, ensuring compatibility and ease of use.
 
-Your first step should be to clone the github repository (easiest way is to clone directly into your Eclipse Workspace folder). You can watch the short video on how to clone and run Memoranda: https://youtu.be/mNPek5NABpI.
+## Technical Highlights
 
-You should then be able to run the project. The included Gradle script and Wrapper should work. You should be able to use "gradle run" in the command line to run Memorande through Gradle. In due course you will need to add things to the Gradle file (eg. add Unit Test).
+- **Java**: Developed with Java [specify version, e.g., Java 11], leveraging its robust features for cross-platform application development. This choice demonstrates a deep understanding of Java's capabilities and best practices in software engineering.
+- **Gradle 8.6**: Utilizes Gradle 8.6 for efficient project management and builds automation, showcasing expertise in modern development tools and practices. This version of Gradle supports a wide range of features that enhance the project's scalability and maintainability.
+- **Trello API Integration**: Demonstrates the ability to integrate with external APIs, providing dynamic data fetching and real-time project management insights.
+- **Continuous Integration/Continuous Deployment (CI/CD)**: Implements CI/CD pipelines using GitHub Actions, highlighting a commitment to automation and quality in the development process.
+- **Automated Testing**: Incorporates JUnit for backend testing and Selenium for front-end testing, emphasizing a thorough approach to quality assurance and reliability.
 
-Start of with changing little things to get to know Memoranda (before the project starts) and just play around. 
 
-After that go back to the initial version and start your SCRUM process and document all changes through GitHub and Taiga (like I said, if it isn’t in GitHub/taiga it does not count).
+## Installation
 
-Good luck and have fun!
+Before you begin, ensure you have Java [specify version, e.g., Java 11] and Gradle 8.6 installed on your machine. These prerequisites are essential for running the Scrum Board Analyzer application successfully.
 
-Dr. Mehlhase
+```bash
+# Check Java version
+java -version
+# Output should match the Java version required, e.g., Java 11
+
+# Check Gradle version
+gradle -v
+# Output should show Gradle 8.6
+
+# Clone the repository
+git clone https://github.com/yourusername/scrum-board-analyzer.git
+
+# Navigate to the project directory
+cd scrum-board-analyzer
+
+# Build the project with Gradle
+./gradle clean build
+
+# Run the application
+./gradle run
+```
 
